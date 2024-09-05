@@ -1,0 +1,41 @@
+{
+  "name": "iso-bsc",
+  "version": "1.0.0",
+  "description": "Isolated Binance module for Airgap wallet and vault application.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf ./dist && tsc && node scripts/copy-files-after-build.js && rm -rf ./module && rm -f iso-bsc.zip && mkdir module && browserify ./dist/index.js -p esmify --standalone bsc > ./module/iso-bsc.js && cp manifest.template.json module/manifest.json && cp assets/* module",
+    "build:compile": "rm -rf ./dist && tsc && node scripts/copy-files-after-build.js && browserify ./dist/index.js -p esmify --standalone bsc > ./module/iso-bsc.js",
+    "generate-schemas": "./scripts/generate-schemas.sh",
+    "generate-keypair": "node ./scripts/generate-keypair.js | tee keypair.json",
+    "sign-module": "node ./scripts/sign-module.js",
+    "export-module": "zip -r ${npm_config_name}.zip module"
+  },
+  "dependencies": {
+    "@airgap/coinlib-core": "^0.13.32",
+    "@airgap/crypto": "^0.13.32",
+    "@airgap/module-kit": "^0.13.32",
+    "@airgap/serializer": "^0.13.32",
+    "@ethereumjs/common": "2.6.5",
+    "@ethereumjs/tx": "3.4.0",
+    "@metamask/eth-sig-util": "4.0.0"
+  },
+  "devDependencies": {
+    "@stablelib/ed25519": "^1.0.3",
+    "@types/node": "14.14.14",
+    "browserify": "^17.0.0",
+    "esmify": "^2.1.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "ts-json-schema-generator": "0.56.0",
+    "typescript": "4.8.4"
+  },
+  "localDependencies": {
+    "ethereumjs-tx": "1.3.7",
+    "ethereumjs-util": "5.2.0"
+  },
+  "overrides": {
+    "@polkadot/util": "2.3.1"
+  }
+}

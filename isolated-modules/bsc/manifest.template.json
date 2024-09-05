@@ -1,0 +1,23 @@
+{
+  "name": "iso-bsc",
+  "version": "1.0.0",
+  "author": "AbhishekJadhavStackera <abhishek.jadhav@stackera.io",
+  "description": "Isolated Binance module for Airgap wallet and vault application",
+  "publicKey": "c8b35c0ece5e02c5dd4e82f962747568044660c5b111490097010124675c324d",
+  "src": {
+    "namespace": "bsc"
+  },
+  "res": {
+	  "symbol": {
+		  "DEVBSC": "file://devbsc.svg"
+	  }
+  },
+  "include": [
+    "iso-bsc.js",
+	  "devbsc.svg"
+  ],
+  "jsenv": {
+    "ios": "webview",
+    "android": "webview"
+  }
+}

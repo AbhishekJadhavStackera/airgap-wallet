@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "BSCTransactionSignRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "callbackURL": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "transaction": {
+          "$ref": "#/definitions/SerializableBSCRawUnsignedTransaction"
+        }
+      },
+      "required": [
+        "publicKey",
+        "transaction"
+      ],
+      "type": "object"
+    },
+    "HexString": {
+      "type": "string"
+    },
+    "SerializableBSCRawUnsignedTransaction": {
+      "additionalProperties": false,
+      "properties": {
+        "chainId": {
+          "type": "number"
+        },
+        "data": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        },
+        "gasLimit": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        },
+        "gasPrice": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        },
+        "nonce": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        },
+        "to": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        }
+      },
+      "required": [
+        "chainId",
+        "data",
+        "gasLimit",
+        "gasPrice",
+        "nonce",
+        "to",
+        "value"
+      ],
+      "type": "object"
+    }
+  }
+}
