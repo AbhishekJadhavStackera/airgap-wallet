@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "BSCTypedTransactionSignRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "callbackURL": {
+          "type": "string"
+        },
+        "publicKey": {
+          "type": "string"
+        },
+        "transaction": {
+          "$ref": "#/definitions/SerializableBSCTypedUnsignedTransaction"
+        }
+      },
+      "required": [
+        "publicKey",
+        "transaction"
+      ],
+      "type": "object"
+    },
+    "HexString": {
+      "type": "string"
+    },
+    "SerializableBSCTypedUnsignedTransaction": {
+      "additionalProperties": false,
+      "properties": {
+        "derivationPath": {
+          "type": "string"
+        },
+        "masterFingerprint": {
+          "type": "string"
+        },
+        "serialized": {
+          "$ref": "#/definitions/HexString",
+          "type": "string"
+        }
+      },
+      "required": [
+        "derivationPath",
+        "masterFingerprint",
+        "serialized"
+      ],
+      "type": "object"
+    }
+  }
+}
